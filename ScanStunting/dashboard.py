@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import pearsonr
+import os
 
 # Setup Halaman
 st.set_page_config(page_title="Analisis Stunting", layout="wide")
@@ -13,7 +14,10 @@ st.markdown("---")
 # 1. Load Data
 @st.cache_data
 def load_data():
-    return pd.read_csv('data_balita_who.csv')
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, 'data_balita_who.csv')
+    
+    return pd.read_csv(file_path)
 
 df = load_data()
 
